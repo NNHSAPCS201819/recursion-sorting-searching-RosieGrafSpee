@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.net.URL;
 import java.io.File;
 import java.io.FileNotFoundException;
 /**
@@ -41,10 +42,15 @@ public class importFile
     
     public static void main(String[] args) throws FileNotFoundException
     {
-        String str = "", fileName = "palindrome.txt";
-        File inputFile = new File(fileName);
-        
-        Scanner s = new Scanner(inputFile);
+        String str = "", fileName = "https://reddit.com";
+        try
+        {
+            URL inputFile = new URL(fileName);
+        }
+        catch ()
+        {
+        }
+        Scanner s = new Scanner(inputFile.openStream());
         s.useDelimiter("[A-Za-z] + ");
         
         for(; s.hasNext();)
@@ -52,7 +58,6 @@ public class importFile
             str += s.next();
         }
         
-        System.out.println(palindrome(str));
-        s.close();
+        System.out.println(str);
     }
 }
