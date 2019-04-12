@@ -9,9 +9,6 @@ import java.awt.Component;
  */
 public class TreeViewer extends JFrame
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
     /**
      * Constructor for objects of class TreeViewer
      */
@@ -19,10 +16,11 @@ public class TreeViewer extends JFrame
     {
         this.setLayout(new BorderLayout());
         
-        this.setTitle( "Drawing Editor" );
+        this.setTitle( "Tree Viewer" );
         this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         
-        this.add(new TreeComponent(), BorderLayout.CENTER);
+        this.setSize(800,400);
+        this.add(new TreeComponent(0, 0, 0, 0), BorderLayout.CENTER);
         
         this.pack();
         this.setVisible( true );
