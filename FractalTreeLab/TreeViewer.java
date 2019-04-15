@@ -21,6 +21,7 @@ public class TreeViewer extends JFrame
         
         this.setSize(800,400);
         this.add(new TreeComponent(0, 0, 0, 0), BorderLayout.CENTER);
+        this.add(new TreeControl(), BorderLayout.SOUTH);
         
         this.pack();
         this.setVisible( true );

@@ -5,17 +5,45 @@ import javax.swing.JPanel;
 import java.awt.geom.Line2D;
 import java.lang.Math.*;
 
-public class TreeComponent extends JPanel
+/**
+ * Write a description of class DrawingPanel here.
+ *
+ * @author (your name)
+ * @version (a version number or a date)
+ */
+public class TreeComponent
 {
-    int l_deg, r_deg, br_size, scale;
+    private double l_deg, r_deg, br_size, scale;
 
     /**
      * Constructor for objects of class TreeComponent
      */
-    public TreeComponent(int l_deg, int r_deg, int scale, int br_size)
+    public TreeComponent(double l_deg, double r_deg, double scale, double br_size)
     {
+        this.l_deg = l_deg;
+        this.r_deg = r_deg;
+        this.br_size = br_size;
+        this.scale = scale;
+    }
+    
+    public void drawTree(Graphics2D g)
+    {
+        TreeComponent temp = new TreeComponent(l_deg, r_deg, scale, br_size / scale);
+        if (this.scale >= 1)
+        {
+            temp.drawTree(g);
+        }
         
         
-        
+    }
+    
+    public double getLeft()
+    {
+        return this.l_deg;
+    }
+    
+    public double getRight()
+    {
+        return this.r_deg;
     }
 }
