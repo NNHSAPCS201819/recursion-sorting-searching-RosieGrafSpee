@@ -14,26 +14,47 @@ import java.awt.Color;
 public class TreeControl extends JPanel
 {
     // instance variables - replace the example below with your own
-    private int x;
+    private JButton chooser; 
+    private JButton addCirc; 
+    private JButton addSq; 
+    private JButton toggle;
+    
+    private JPanel carousel;
+    private DrawingPanel canvas;
 
     /**
      * Constructor for objects of class TreeControl
      */
-    public TreeControl()
+    public TreeControl(DrawingPanel canvas)
     {
-        // initialise instance variables
-        x = 0;
+        this.canvas = canvas;
+
+        this.chooser = new JButton("Shape color");
+        this.addCirc = new JButton("Add circle");
+        this.addSq = new JButton("Add square");
+        this.toggle = new JButton("Transparent - false");
+        this.carousel = new JPanel();
+        
+        this.setBackground(Color.WHITE);
+        
+        ButtonListener listener = new ButtonListener();
+        
+        this.chooser.addActionListener(listener);
+        this.addCirc.addActionListener(listener);
+        this.addSq.addActionListener(listener);
+        this.toggle.addActionListener(listener);
+        
+        this.add(toggle);
+        this.add(chooser);
+        this.add(carousel);
+        this.add(addCirc);
+        this.add(addSq);
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
+    public class ButtonListener implements ActionListener
     {
-        // put your code here
-        return x + y;
+        public void actionPerformed (ActionEvent e)
+        {
+        }
     }
 }

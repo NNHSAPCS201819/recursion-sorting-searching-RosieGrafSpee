@@ -20,6 +20,10 @@ public class TreeComponent
     /**
      * Constructor for objects of class TreeComponent
      */
+    public TreeComponent()
+    {
+    }
+    
     public TreeComponent(double l_deg, double r_deg, double orient, double br_size, double scale, Point2D.Double loc)
     {
         this.l_deg = l_deg;
@@ -35,7 +39,7 @@ public class TreeComponent
         Point2D.Double end = new Point2D.Double(base.getX() + br_size * Math.cos(orient), base.getY() + br_size * Math.sin(orient));
         TreeComponent a = new TreeComponent(l_deg, r_deg, orient + l_deg, br_size / scale, scale, end);
         TreeComponent b = new TreeComponent(l_deg, r_deg, orient - r_deg, br_size / scale, scale, end);
-        if (br_size > 1)
+        if (br_size > 10)
         {
             a.drawTree(g);
             b.drawTree(g);

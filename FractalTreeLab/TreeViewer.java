@@ -1,6 +1,7 @@
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.geom.Point2D;
 /**
  * Write a description of class TreeViewer here.
  *
@@ -9,19 +10,23 @@ import java.awt.Component;
  */
 public class TreeViewer extends JFrame
 {
+    DrawingPanel canvas;
+    TreeControl control;
     /**
      * Constructor for objects of class TreeViewer
      */
     public TreeViewer()
-    {
-        this.setLayout(new BorderLayout());
-        
+    {   
         this.setTitle( "Tree Viewer" );
         this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+        this.setLayout(new BorderLayout());
         
         this.setSize(800,400);
-        this.add(new TreeComponent(0, 0, 0, 0), BorderLayout.CENTER);
-        this.add(new TreeControl(), BorderLayout.SOUTH);
+        
+        this.canvas = new DrawingPanel();
+        this.control = new TreeControl(this.canvas);
+        this.add(this.canvas, BorderLayout.CENTER);
+        this.add(this.control, BorderLayout.SOUTH);
         
         this.pack();
         this.setVisible( true );
