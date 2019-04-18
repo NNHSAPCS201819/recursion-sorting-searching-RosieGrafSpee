@@ -1,9 +1,34 @@
+import java.util.Random;
 /**
    The sort method of this class sorts an array, using the merge 
    sort algorithm.
 */
 public class MergeSorter
 {
+   private static String randomString(int numChars)
+   {
+      char[] res = new char[numChars];
+      Random a = new Random();
+      
+      for (int i = 0; i < numChars; i++)
+      {
+          res[i] = (char)(a.nextInt(26) + 'a');
+      }
+      
+      return new String(res);
+   }
+   
+   public static String[] randomStringArray(int length, int numChars)
+   {
+      String[] res = new String[length];
+      for (int i = 0; i < length; i++)
+      {
+         res[i] = randomString(numChars);
+      }
+      
+      return res;
+   }
+   
    /**
       Sorts an array, using merge sort.
       @param a the array to sort
