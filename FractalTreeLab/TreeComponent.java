@@ -12,7 +12,7 @@ import java.lang.Math.*;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class TreeComponent
+public class TreeComponent extends JComponent
 {
     private double l_deg, r_deg, orient, br_size, scale;
     private Point2D.Double base;
@@ -34,15 +34,15 @@ public class TreeComponent
         this.base = loc;
     }
     
-    public void drawTree(Graphics2D g)
+    public void paintComponent(Graphics2D g)
     {
-        Point2D.Double end = new Point2D.Double(base.getX() + br_size * Math.cos(orient), base.getY() + br_size * Math.sin(orient));
+        Point2D.Double end = new Point2D.Double(base.getX() + br_size * Math.cos(orient), base.getY() - br_size * Math.sin(orient));
         TreeComponent a = new TreeComponent(l_deg, r_deg, orient + l_deg, br_size / scale, scale, end);
         TreeComponent b = new TreeComponent(l_deg, r_deg, orient - r_deg, br_size / scale, scale, end);
-        if (br_size > 10)
+        if (br_size > 1)
         {
-            a.drawTree(g);
-            b.drawTree(g);
+            a.paintComponent(g);
+            b.paintComponent(g);
         }
         
         g.drawLine((int)this.base.getX(), (int)this.base.getY(), (int)end.getX(), (int)end.getY());

@@ -16,13 +16,12 @@ public class DrawingPanel extends JPanel
 {
     // instance variables - replace the example below with your own
     private int x;
-    private static final int WIDTH = 200, HEIGHT = 200;
+    private static final int WIDTH = 600, HEIGHT = 600;
     /**
      * Constructor for objects of class DrawingPanel
      */
     public DrawingPanel()
     {
-        this.setSize(800, 800);
     }
     
     public Dimension getPreferredSize()
@@ -36,12 +35,14 @@ public class DrawingPanel extends JPanel
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public void paintComponent(Graphics2D g)
+    
+    public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
+        g.setColor(Color.BLACK);
         
-        TreeComponent comp = new TreeComponent(0.2, 0.2, 0, 50, 2, new Point2D.Double(300, 300));
-        comp.drawTree(g2);
+        TreeComponent comp = new TreeComponent(0.2, 0.3, Math.PI / 2, 100, 1.4, new Point2D.Double(300, 300));
+        comp.paintComponent(g2);
     }
 }

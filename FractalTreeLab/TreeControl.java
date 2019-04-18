@@ -29,7 +29,7 @@ public class TreeControl extends JPanel
     {
         this.canvas = canvas;
 
-        this.chooser = new JButton("Shape color");
+        this.chooser = new JButton("Tree Color");
         this.addCirc = new JButton("Add circle");
         this.addSq = new JButton("Add square");
         this.toggle = new JButton("Transparent - false");
