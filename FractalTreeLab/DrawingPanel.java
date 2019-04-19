@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import javax.swing.JColorChooser;
 import javax.swing.JComponent;
 import java.awt.*;
 import javax.swing.JPanel;
@@ -15,13 +16,23 @@ import java.lang.Math.*;
 public class DrawingPanel extends JPanel
 {
     // instance variables - replace the example below with your own
-    private int x;
-    private static final int WIDTH = 600, HEIGHT = 600;
+    private double l_angle, r_angle, x, y, size, branch;
+    private static final int WIDTH = 1366, HEIGHT = 768;
+    private Color col;
     /**
      * Constructor for objects of class DrawingPanel
      */
     public DrawingPanel()
     {
+        this.setBackground(Color.WHITE);
+        this.col = Color.BLACK;
+        this.l_angle = Math.PI / 2;
+        this.r_angle = Math.PI / 2;
+        
+        this.x = WIDTH / 2;
+        this.y = 4 * HEIGHT / 5;
+        this.size = HEIGHT / 2;
+        this.branch = 12;
     }
     
     public Dimension getPreferredSize()
@@ -40,9 +51,44 @@ public class DrawingPanel extends JPanel
     {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        g.setColor(Color.BLACK);
+        g.setColor(col);
         
-        TreeComponent comp = new TreeComponent(0.2, 0.3, Math.PI / 2, 100, 1.4, new Point2D.Double(300, 300));
+        TreeComponent comp = new TreeComponent(l_angle, r_angle, Math.PI / 2, size, branch, new Point2D.Double(x, y));
         comp.paintComponent(g2);
+    }
+    
+    public Color getColor()
+    {
+        return this.col;
+    }
+    
+    public void setLeft(double l_deg)
+    {
+        this.l_angle = l_deg;
+    }
+    
+    public void setRight(double r_deg)
+    {
+        this.r_angle = r_deg;
+    }
+    
+    public void setScale(double scale)
+    {
+        this.size = scale;
+    }
+    
+    public void setBranch(double branch)
+    {
+        this.branch = branch;
+    }
+    
+    public void pickColor()
+    {
+        Color selectedColor = JColorChooser.showDialog( this, "select the fill color", this.col );
+        
+        if( selectedColor != null )
+        {
+            this.col = selectedColor;
+        }
     }
 }
