@@ -3,10 +3,10 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.geom.Point2D;
 /**
- * Write a description of class TreeViewer here.
+ * Opens a frame in which a tree is drawn
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author RosieGrafSpee
+ * @version April 18, 2019
  */
 public class TreeViewer extends JFrame
 {
@@ -32,6 +32,9 @@ public class TreeViewer extends JFrame
         this.setVisible( true );
     }
     
+    /**
+     * Test for class TreeViewer
+     */
     public static void main( String[] args )
     {
        TreeViewer thing = new TreeViewer();

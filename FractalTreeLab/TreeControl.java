@@ -1,4 +1,3 @@
-
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -11,10 +10,10 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 
 /**
- * Write a description of class TreeControl here.
+ * The buttons and sliders for a TreeViewer
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author RosieGrafSpee
+ * @version April 18, 2019
  */
 public class TreeControl extends JPanel
 {
@@ -72,14 +71,14 @@ public class TreeControl extends JPanel
         this.size.setPaintLabels(true);
         this.size.setMajorTickSpacing(java.lang.Math.min((int)canvas.getPreferredSize().getHeight(), (int)canvas.getPreferredSize().getWidth()) / 5);
         
-        this.branch = new JSlider(2, 22);
+        this.branch = new JSlider(11, 231);
         JLabel fourth = new JLabel("Ratio between branches");
         this.branch.addChangeListener(new SliderListener());
         
         this.branch.setPaintTrack(true);
         this.branch.setPaintTicks(true);
         this.branch.setPaintLabels(true);
-        this.branch.setMajorTickSpacing(2);
+        this.branch.setMajorTickSpacing(22);
         
         
         this.add(color);
@@ -97,8 +96,14 @@ public class TreeControl extends JPanel
         this.add(branch);
     }
 
+    /**
+     * Class for ButtonListener objects i.e. objects used when a button is clicked 
+     */
     public class ButtonListener implements ActionListener
     {
+        /**
+         * Reacts when a button is pressed.
+         */
         public void actionPerformed (ActionEvent e)
         {
             canvas.pickColor();
@@ -108,8 +113,14 @@ public class TreeControl extends JPanel
         }
     }
     
+    /**
+     * Class for SliderListener objects i.e. objects used when a slider is moved
+     */
     public class SliderListener implements ChangeListener
     {
+        /**
+         * Reacts to changes in slider state
+         */
         public void stateChanged (ChangeEvent e)
         {
             if (e.getSource() == left)
@@ -132,7 +143,7 @@ public class TreeControl extends JPanel
             
             if (e.getSource() == branch)
             {
-                canvas.setBranch(branch.getValue());
+                canvas.setBranch((double)(branch.getValue()) / 10.0);
                 canvas.repaint();
             }
         }
